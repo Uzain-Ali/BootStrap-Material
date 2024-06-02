@@ -1,0 +1,474 @@
+-jQuery, Popper.js
+-jQuery must come first, then Popper.js, and then our JavaScript plugins
+-normalization of cross browser styles
+-Responsive meta tag
+Bootstrap is developed mobile first, a strategy in which we optimize code for mobile devices first and then scale up components as necessary using CSS media queries. To ensure proper rendering and touch zooming for all devices, add the responsive viewport meta tag to your <head>.
+-Box-Sizing:
+.selector-for-some-widget {
+  box-sizing: content-box;
+}
+-To download bootstrap in nodeJS
+-npm
+Install Bootstrap in your Node.js powered apps with the npm package:
+
+Copy
+npm install bootstrap
+
+-Layout in Bootstrap
+
+    -Containers:
+    -.container for center
+        -required when using our default grid system
+        - fluid-width and fixed-width[Fixed-Width Layouts:          These    are layouts where the width of     the entire page is set with a specific numerical value.
+            Liquid Layouts: These are layouts where the width of the entire page is flexible depending on how wide the viewer's browser is.]
+        -.container-fluid: take the whole viewpont width
+-For min-width:
+
+-Responses BreakPoint
+    @include media-breakpoint-up(xs) { ... }
+    @include media-breakpoint-up(sm) { ... }
+    @include media-breakpoint-up(md) { ... }
+    @include media-breakpoint-up(lg) { ... }
+    @include media-breakpoint-up(xl) { ... }
+
+// Example usage:
+@include media-breakpoint-up(sm) {
+  .some-class {
+    display: block;
+  }
+}
+
+-For max-width:
+@include media-breakpoint-down(xs) { ... }
+@include media-breakpoint-down(sm) { ... }
+@include media-breakpoint-down(md) { ... }
+@include media-breakpoint-down(lg) { ... }
+
+
+-For Both:
+        @include media-breakpoint-only(xs) { ... }
+        @include media-breakpoint-only(sm) { ... }
+        @include media-breakpoint-only(md) { ... }
+        @include media-breakpoint-only(lg) { ... }
+        @include media-breakpoint-only(xl) { ... }
+
+-For-range
+
+    @include media-breakpoint-between(md, xl) { ... }
+
+
+Margins:
+Margins create space around an element, pushing other elements away.
+You can use classes like m-* for margin, where * can be:
+m-0: No margin
+m-1, m-2, m-3, m-4, m-5: Margin with increasing size (larger number = more space)
+mx-*: Horizontal margin (left and right)
+my-*: Vertical margin (top and bottom)
+mt-*: Margin top
+mb-*: Margin bottom
+ml-*: Margin left
+mr-*: Margin right
+
+
+Paddings:
+Padding creates space inside an element, pushing the content away from its border.
+Use classes like p-* for padding, similar to margins:
+p-0: No padding
+p-1, p-2, p-3, p-4, p-5: Padding with increasing size
+px-*: Horizontal padding
+py-*: Vertical padding
+pt-*: Padding top
+pb-*: Padding bottom
+pl-*: Padding left
+pr-*: Padding right
+
+-Grid system
+
+    -twelve column system
+    -col-sm:for small columns
+    -Each column has horizontal padding (called a gutter) for controlling the space between them.
+    -In a grid layout, content must be placed within columns and only columns may be immediate children of rows.
+    -grid columns without a specified width will automatically layout as equal width columns
+    - if you want three equal-width columns across, you can use .col-4.
+    you can remove the margin from rows and padding from columns with .no-gutters on the .row.
+    -.col-sm-4 applies to small, medium, large, and extra large devices, but not the first xs breakpoint).
+    -w-100:to give width
+    -For grids that are the same from the smallest of devices to the largest, use the .col and .col-* classes.
+
+    [Vertical alignment]
+        align-items-start:To aligh=n on starting row/column
+        align-items-center:To align on center column/row
+        align-items-end:To align on end of the screen
+
+    [Horizontal alignment]
+        justify-content-start:To placed the content on 1st column
+        justify-content-center:To placed the content on centered column
+        justify-content-end:To placed the content on last column
+        justify-content-around:space b/w divs but half on initial and end 
+        justify-content-between:space between the divs not start and end
+
+    No gutters:
+    The gutters between columns in our predefined grid classes can be removed with .no-gutters. This removes the negative margins from .row and the horizontal padding from all immediate children columns.
+    [basically no-gutter remove ther padding and margin of the div from right and left]
+
+    -Column wrapping
+If more than 12 columns are placed within a single row, each group of extra columns will, as one unit, wrap onto a new line.
+
+        <!-- Force next columns to break to new line -->
+        <div class="w-100"></div>
+        <!-- Force next columns to break to new line at md breakpoint and up -->
+        <div class="w-100 d-none d-md-block"></div>
+
+        Order Classes:
+            Use .order- classes for controlling the visual order of your content.
+            -order-12: like this this will order in the end however it's written in the biggining
+            -order-first
+            -order-last
+
+        Offsetting columns:
+            -Offsetting means you're creating space before a column starts
+            -Move columns to the right using .offset-md-* classes
+            -col-md-4
+            -In addition to column clearing at responsive breakpoints, you may need to reset offsets.[offset-sm-0]
+
+            -Margin utilities
+                With the move to flexbox in v4, you can use margin utilities like .mr-auto to force sibling columns away from one another.
+
+            -Nesting
+                To nest your content with the default grid, add a new .row and set of .col-sm-* columns within an existing .col-sm-*
+
+
+        Media object
+            Documentation and examples for Bootstrap’s media object to construct highly repetitive components like blog comments, tweets, and the like.
+            -Only two classes are required—the wrapping .media and the .media-body around your content.
+            -Media in a media object can be aligned with flexbox utilities to the top (default), middle, or end of your .media-body content.[align-self-start and further..]
+            -Change the order of content in media objects by modifying the HTML itself, or by adding some custom flexbox CSS to set the order property (to an integer of your choosing).
+
+        -For adding display in out layout
+            -.d-flex or one of the responsive variants (e.g., .d-sm-flex)
+
+        Headings:
+            .h1 through .h6 classes are also available, for when you want to match the font styling of a heading but cannot use the associated HTML element.
+
+            <h3>Fancy display heading
+                <small class="text-muted">With faded secondary text</small>
+                </h3>
+
+        Paragraph:
+            Make a paragraph stand out by adding .lead.
+
+        Add .initialism to an abbreviation for a slightly smaller font-size.
+
+        For quoting blocks of content from another source within your document. Wrap <blockquote class="blockquote"> around any HTML as the quote.
+
+        blockquote
+        blockquote-footer
+        text-center:to center text
+        text-right and text-left
+
+        Unstyled
+            Remove the default list-style and left margin on list items (immediate children only). This only applies to immediate children list items,
+
+            list-unstyled:it'll remove the bullet or numbers
+
+            Inline
+                Remove a list’s bullets and apply some light margin with a combination of two classes, .list-inline and .list-inline-item.
+
+            Align terms and descriptions horizontally by using our grid system’s predefined classes (or semantic mixins). For longer terms, you can optionally add a .text-truncate class to truncate the text with an ellipsis.
+
+    Responsive images
+        Images in Bootstrap are made responsive with .img-fluid. max-width: 100%; and height: auto; are applied to the image so that it scales with the parent element.
+
+        mg-fluid:for image to take the given width
+        In addition to our border-radius utilities, you can use 
+        .img-thumbnail to give an image a rounded 1px border appearance.
+
+        Align images with the helper float classes or text alignment classes. block-level images can be centered using the .mx-auto margin utility class.
+
+        rounded: for border-radius
+         float-left:to place two image one on the start and other to the end
+         mx-auto:to center the image
+
+    Tables:
+        .table: to create table 
+        .table-dark: to dark the bg 
+        .thead-light or .thead-dark: to light or dark the head of table
+        .table-striped:for zebra coloring on table
+        .table-bordered:to border the table
+        .table-hover: hovering effect
+        .table-sm to make tables more compact by cutting cell padding in half.
+        .table-responsive: to make table responsive
+
+        Use .table-responsive{-sm|-md|-lg|-xl} as needed to create responsive tables up to a particular breakpoint. From that breakpoint and up, the table will behave normally and not scroll horizontally.
+
+
+
+        Contextual classes:
+        <tr class="table-active">...</tr>
+        <tr class="table-primary">...</tr>
+        <tr class="table-secondary">...</tr>
+        <tr class="table-success">...</tr>
+        <tr class="table-danger">...</tr>
+        <tr class="table-warning">...</tr>
+        <tr class="table-info">...</tr>
+        <tr class="table-light">...</tr>
+        <tr class="table-dark">...</tr>
+
+        <!-- On rows -->
+        <tr class="bg-primary">...</tr>
+        <tr class="bg-success">...</tr>
+        <tr class="bg-warning">...</tr>
+        <tr class="bg-danger">...</tr>
+        <tr class="bg-info">...</tr>
+
+        <!-- On cells (`td` or `th`) -->
+        <tr>
+        <td class="bg-primary">...</td>
+        <td class="bg-success">...</td>
+        <td class="bg-warning">...</td>
+        <td class="bg-danger">...</td>
+        <td class="bg-info">...</td>
+        </tr>
+
+    Figure:
+        Use the included .figure , .figure-img and .figure-caption classes to provide some baseline styles for the HTML5 <figure> and <figcaption> elements. Images in figures have no explicit size, so be sure to add the .img-fluid class to your <img> to make it responsive.
+
+
+
+        Alert:
+        alert alert-warning alert-dismissible fade show
+
+        Badges:
+        badge badge-secondary badge-light
+
+        Breadcrumb:
+        breadcrumb-item active
+
+        Buttons:
+        btn btn-link btn-primary,secondary,success,danger,warning,info,light,dark, btn-outline-  .btn-lg or .btn-sm for additional sizes. .btn-block active
+
+        Make buttons look inactive by adding the disabled boolean attribute to any <button> element.
+
+        Wrap a series of buttons with .btn in .btn-group
+
+        btn-toolbar
+
+        Place a .btn-group within another .btn-group when you want dropdown menus mixed with a series of buttons.
+
+        btn-group-vertical
+
+        Cards:
+            card card-img-top card-body card-title ard-text card-subtitle card-lin list-group list-group-flush card-header
+            nav nav-tabs card-header-tab
+
+        Carousel:
+            carousel slide carousel-inner carousel-item carousel-control-next carousel-control-prev-icon carousel-control-prev carousel-indicators
+
+
+        From
+            form-group form-control form-text form-check-input text-muted form-check-label form-control-file form-row
+            Set heights using classes like .form-control-lg and .form-control-sm.
+
+
+
+        Border-Radius:
+
+            <img src="..." alt="..." class="rounded">
+            <img src="..." alt="..." class="rounded-top">
+            <img src="..." alt="..." class="rounded-right">
+            <img src="..." alt="..." class="rounded-bottom">
+            <img src="..." alt="..." class="rounded-left">
+            <img src="..." alt="..." class="rounded-circle">
+            <img src="..." alt="..." class="rounded-0">
+
+        Float:
+            .float-left
+        .float-right
+        .float-none
+        .float-sm-left
+        .float-sm-right
+        .float-sm-none
+        .float-md-left
+        .float-md-right
+        .float-md-none
+        .float-lg-left
+        .float-lg-right
+        .float-lg-none
+        .float-xl-left
+        .float-xl-right
+        .float-xl-none
+
+
+        Flex:
+            .d-flex
+            .d-inline-flex
+            .d-sm-flex
+            .d-sm-inline-flex
+            .d-md-flex
+            .d-md-inline-flex
+            .d-lg-flex
+            .d-lg-inline-flex
+            .d-xl-flex
+            .d-xl-inline-flex
+
+            Responsive variations also exist for flex-direction.
+
+            .flex-row
+            .flex-row-reverse
+            .flex-column
+            .flex-column-reverse
+            .flex-sm-row
+            .flex-sm-row-reverse
+            .flex-sm-column
+            .flex-sm-column-reverse
+            .flex-md-row
+            .flex-md-row-reverse
+            .flex-md-column
+            .flex-md-column-reverse
+            .flex-lg-row
+            .flex-lg-row-reverse
+            .flex-lg-column
+            .flex-lg-column-reverse
+            .flex-xl-row
+            .flex-xl-row-reverse
+            .flex-xl-column
+            .flex-xl-column-reverse
+
+            Justify content:
+            Responsive variations also exist for justify-content.
+
+            .justify-content-start
+            .justify-content-end
+            .justify-content-center
+            .justify-content-between
+            .justify-content-around
+            .justify-content-sm-start
+            .justify-content-sm-end
+            .justify-content-sm-center
+            .justify-content-sm-between
+            .justify-content-sm-around
+            .justify-content-md-start
+            .justify-content-md-end
+            .justify-content-md-center
+            .justify-content-md-between
+            .justify-content-md-around
+            .justify-content-lg-start
+            .justify-content-lg-end
+            .justify-content-lg-center
+            .justify-content-lg-between
+            .justify-content-lg-around
+            .justify-content-xl-start
+            .justify-content-xl-end
+            .justify-content-xl-center
+            .justify-content-xl-between
+            .justify-content-xl-around
+
+            Align items:
+
+            .align-items-start
+            .align-items-end
+            .align-items-center
+            .align-items-baseline
+            .align-items-stretch
+            .align-items-sm-start
+            .align-items-sm-end
+            .align-items-sm-center
+            .align-items-sm-baseline
+            .align-items-sm-stretch
+            .align-items-md-start
+            .align-items-md-end
+            .align-items-md-center
+            .align-items-md-baseline
+            .align-items-md-stretch
+            .align-items-lg-start
+            .align-items-lg-end
+            .align-items-lg-center
+            .align-items-lg-baseline
+            .align-items-lg-stretch
+            .align-items-xl-start
+            .align-items-xl-end
+            .align-items-xl-center
+            .align-items-xl-baseline
+            .align-items-xl-stretch
+
+        Align self
+
+            .align-self-start
+            .align-self-end
+            .align-self-center
+            .align-self-baseline
+            .align-self-stretch
+            .align-self-sm-start
+            .align-self-sm-end
+            .align-self-sm-center
+            .align-self-sm-baseline
+            .align-self-sm-stretch
+            .align-self-md-start
+            .align-self-md-end
+            .align-self-md-center
+            .align-self-md-baseline
+            .align-self-md-stretch
+            .align-self-lg-start
+            .align-self-lg-end
+            .align-self-lg-center
+            .align-self-lg-baseline
+            .align-self-lg-stretch
+            .align-self-xl-start
+            .align-self-xl-end
+            .align-self-xl-center
+            .align-self-xl-baseline
+            .align-self-xl-stretch
+
+        Flex-wrap
+        .flex-nowrap
+        .flex-wrap
+        .flex-wrap-reverse
+        .flex-sm-nowrap
+        .flex-sm-wrap
+        .flex-sm-wrap-reverse
+        .flex-md-nowrap
+        .flex-md-wrap
+        .flex-md-wrap-reverse
+        .flex-lg-nowrap
+        .flex-lg-wrap
+        .flex-lg-wrap-reverse
+        .flex-xl-nowrap
+        .flex-xl-wrap
+        .flex-xl-wrap-reverse
+
+        Align-Content:
+        Responsive variations also exist for align-content.
+
+        .align-content-start
+        .align-content-end
+        .align-content-center
+        .align-content-around
+        .align-content-stretch
+        .align-content-sm-start
+        .align-content-sm-end
+        .align-content-sm-center
+        .align-content-sm-around
+        .align-content-sm-stretch
+        .align-content-md-start
+        .align-content-md-end
+        .align-content-md-center
+        .align-content-md-around
+        .align-content-md-stretch
+        .align-content-lg-start
+        .align-content-lg-end
+        .align-content-lg-center
+        .align-content-lg-around
+        .align-content-lg-stretch
+        .align-content-xl-start
+        .align-content-xl-end
+        .align-content-xl-center
+        .align-content-xl-around
+        .align-content-xl-stretch
+
+
+        Position
+        <div class="position-static">...</div>
+        <div class="position-relative">...</div>
+        <div class="position-absolute">...</div>
+        <div class="position-fixed">...</div>
+        <div class="position-sticky">...</div>
